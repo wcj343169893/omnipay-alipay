@@ -43,7 +43,7 @@ The following gateways are provided by this package:
 | Alipay_LegacyApp 	    	| Alipay Legacy APP Gateway       |APP支付      | [Usage][link-wiki-legacy-app] [Doc][link-doc-legacy-app]      |
 | Alipay_LegacyExpress 		| Alipay Legacy Express Gateway   |即时到账    | [Usage][link-wiki-legacy-express] [Doc][link-doc-legacy-express]|
 | Alipay_LegacyWap      	| Alipay Legacy WAP Gateway   |手机网站支付     | [Usage][link-wiki-legacy-wap] [Doc][link-doc-legacy-wap]       |
-
+| Alipay_Oauth				| Alipay Oauth 					|支付宝自动授权登陆		|	|
 ## Usage
 
 ### Purchase (购买)
