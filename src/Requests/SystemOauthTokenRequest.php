@@ -1,6 +1,8 @@
 <?php
 namespace Omnipay\Alipay\Requests;
 
+use Omnipay\Alipay\Responses\SystemOauthTokenResponse;
+
 class SystemOauthTokenRequest extends AbstractAopRequest
 {
 
@@ -26,5 +28,11 @@ class SystemOauthTokenRequest extends AbstractAopRequest
     public function validateParams()
     {
         $this->validate('app_id', 'format', 'charset', 'sign_type', 'timestamp', 'version', 'grant_type');
+    }
+    public function sendData($data)
+    {
+        $data = parent::sendData($data);
+        
+        return $this->response = new SystemOauthTokenResponse($this, $data);
     }
 }

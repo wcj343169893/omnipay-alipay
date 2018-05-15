@@ -20,7 +20,7 @@ class OauthGateway extends AbstractAopGateway
      */
     public function getName()
     {
-        return 'Alipay Js Gateway';
+        return 'Alipay Oauth';
     }
     
     

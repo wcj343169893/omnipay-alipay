@@ -46,6 +46,35 @@ The following gateways are provided by this package:
 | Alipay_Oauth				| Alipay Oauth 					|支付宝自动授权登陆		|	|
 ## Usage
 
+
+### 支付宝自动登录
+```php
+/**
+ *
+ * @var \Omnipay\Alipay\OauthGateway $gateway
+ */
+$gateway = Omnipay::create("Alipay_Oauth");
+$gateway->setSignType('RSA2'); // RSA/RSA2/MD5
+$gateway->setAppId($this->getConfig("appId"));
+$gateway->setPrivateKey($this->getConfig("privateKey"));
+$gateway->setAlipayPublicKey($this->getConfig("alipayPublicKey"));
+
+/**
+ *
+ * @var \Omnipay\Alipay\Requests\SystemOauthTokenRequest $request
+ */
+$request = $gateway->purchase();
+if (! empty($refreshToken)) {
+    $request->setRefreshToken($refreshToken);
+} else {
+    $request->setCode($code);
+}
+$response = $request->send();
+if($response->isSuccessful()){
+    return $response->getData();
+}
+return false;
+
 ### Purchase (购买)
 
 ```php
