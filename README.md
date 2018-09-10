@@ -74,6 +74,7 @@ if($response->isSuccessful()){
     return $response->getData();
 }
 return false;
+```
 
 ### Purchase (购买)
 
@@ -101,6 +102,33 @@ $response = $gateway->purchase()->setBizContent([
 
 $url = $response->getRedirectUrl();
 ```
+### 支付宝sdk授权登陆签名
+```php
+$gateway = Omnipay::create("Alipay_Sdk");
+$gateway->setSignType('RSA2');
+$gateway->setAppId('the_app_id');
+$gateway->setPid("parter_id");
+$gateway->setAppId('the_app_id');
+$gateway->setPrivateKey('the_app_private_key');
+$gateway->setAlipayPublicKey('the_alipay_public_key');
+$request = $gateway->purchase();
+$data= $request->getData();
+```
+返回
+{
+    "apiname": "com.alipay.account.auth",
+    "app_id": "201510000934009",
+    "app_name": "mc",
+    "auth_type": "AUTHACCOUNT",
+    "biz_type": "openservice",
+    "method": "alipay.open.auth.sdk.code.get",
+    "pid": "208831001128084",
+    "product_id": "APP_FAST_LOGIN",
+    "scope": "kuaijie",
+    "sign_type": "RSA2",
+    "target_id": "2018091018001867226",
+    "sign": "BtAZTli9Lv7rRJxD14139v\/5g0nCH1vIwn\/1SsNQpL1FQrgLkizUeN\/pwa5Dnmz5i0jV0Rbj3tKR4z1uxFojthIzum0gQ9TmaxZwNsOFfwg1JFoqAy41cOEHp9nnhDeDjr\/SZa00BIPtjgN\/pwcQhS6za\/8xfiG8EAcjptjNsQTgKm2OcwOdcp7xjUBAqk49feJ+PRVxmQ1+XVjyRs+QkI4CFLh1aDl59vYZkHJKP9Y7NnSn18aX66PtQ5+B9v2L34pV+E9uly3f3tTHl\/2SSI9NRFgCQxukHWwTGa7LmDjo16\/jaUymGiMVDHO\/Hz1zH6K4KAbs+qTLWLCaHEVBTw=="
+}
 
 For general usage instructions, please see the main [Omnipay](https://github.com/omnipay/omnipay)
 repository.
