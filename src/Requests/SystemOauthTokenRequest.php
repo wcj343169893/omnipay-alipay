@@ -3,6 +3,11 @@ namespace Omnipay\Alipay\Requests;
 
 use Omnipay\Alipay\Responses\SystemOauthTokenResponse;
 
+/**
+ * 换取授权访问令牌
+ * @author Wenchaojun <343169893@qq.com>
+ * @link https://docs.open.alipay.com/api_9/alipay.system.oauth.token
+ */
 class SystemOauthTokenRequest extends AbstractAopRequest
 {
 
