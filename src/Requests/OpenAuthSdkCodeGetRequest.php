@@ -15,11 +15,21 @@ class OpenAuthSdkCodeGetRequest extends AbstractAopRequest
         $this->setParameter('app_name', "mc");
         $this->setParameter('biz_type', "openservice");
         $this->setParameter('product_id', "APP_FAST_LOGIN");
-        $this->setParameter('scope', "kuaijie");
+        //$this->setParameter('scope', "kuaijie");
         $this->setParameter('auth_type', "AUTHACCOUNT");
+        if (! $this->getScope()) {
+            $this->setScope("kuaijie");
+        }
         if (! $this->getTargetId()) {
             $this->setTargetId(date('YmdHis').rand(10000,99999));
         }
+    }
+    //auth_base auth_user
+    public function setScope($scope){
+        $this->setParameter('scope',$scope);
+    }
+    public function getScope(){
+        return $this->getParameter('scope');
     }
     public function setPid($pid){
         $this->setParameter('pid',$pid);
