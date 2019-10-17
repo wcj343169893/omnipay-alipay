@@ -14,6 +14,9 @@ use Omnipay\Alipay\Requests\AopTradeRefundRequest;
 use Omnipay\Alipay\Requests\DataServiceBillDownloadUrlQueryRequest;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Exception\InvalidRequestException;
+use Omnipay\Alipay\Requests\AopTradeRoyaltyRelationBindRequest;
+use Omnipay\Alipay\Requests\AopTradeRoyaltyRelationUnbindRequest;
+use Omnipay\Alipay\Requests\AopTradeRoyaltyRelationBatchqueryRequest;
 
 abstract class AbstractAopGateway extends AbstractGateway
 {
@@ -441,6 +444,39 @@ abstract class AbstractAopGateway extends AbstractGateway
     public function settle(array $parameters = [])
     {
         return $this->createRequest(AopTradeOrderSettleRequest::class, $parameters);
+    }
+    /**
+     * 分账关系绑定
+     *
+     * @param array $parameters
+     *
+     * @return AopTradeCancelRequest
+     */
+    public function royaltyRelationBind(array $parameters = [])
+    {
+        return $this->createRequest(AopTradeRoyaltyRelationBindRequest::class, $parameters);
+    }
+    /**
+     * 分账关系解除绑定
+     *
+     * @param array $parameters
+     *
+     * @return AopTradeCancelRequest
+     */
+    public function royaltyRelationUnbind(array $parameters = [])
+    {
+        return $this->createRequest(AopTradeRoyaltyRelationUnbindRequest::class, $parameters);
+    }
+    /**
+     * 分账关系查询
+     *
+     * @param array $parameters
+     *
+     * @return AopTradeCancelRequest
+     */
+    public function royaltyRelationBatchquery(array $parameters = [])
+    {
+        return $this->createRequest(AopTradeRoyaltyRelationBatchqueryRequest::class, $parameters);
     }
 
 
